@@ -1,6 +1,6 @@
 FROM php:7.1-fpm-alpine
 
-ENV CYPHT_DEST "/usr/local/share/cypht"
+ARG CYPHT_DEST "/usr/local/share/cypht"
 
 WORKDIR "/var/www"
 
