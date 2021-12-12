@@ -23,6 +23,9 @@ services:
       - ALLOW_EMPTY_PASSWORD=yes
       - REDIS_PASSWORD=zabata
       - REDIS_PORT_NUMBER=6379
+      - REDIS_INDEX=1
+      - REDIS_SOCKET=/var/run/redis/redis-server.sock
+
   cypht:
     image: sailfrog/cypht-docker:latest
     volumes:
@@ -37,7 +40,7 @@ services:
       - CYPHT_DB_NAME=cypht
       - CYPHT_DB_USER=cypht
       - CYPHT_DB_PASS=zabata
-      - CYPHT_SESSION_TYPE=DB
+      - CYPHT_SESSION_TYPE=REDIS
       - CYPHT_DISABLE_ORIGIN_CHECK=true
       - CYPHT_ENABLE_MEMCACHED=true
       - CYPHT_MEMCACHED_SERVER=memcached
@@ -67,3 +70,5 @@ services:
       - CYPHT_REDIS_SERVER=redis
       - CYPHT_REDIS_PORT=6379
       - CYPHT_REDIS_PASS=zabata
+      - CYPHT_REDIS_INDEX=1
+      - CYPHT_REDIS_SOCKET=/var/run/redis/redis-server.sock
