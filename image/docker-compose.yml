@@ -10,7 +10,7 @@ services:
       - MYSQL_USER=cypht
       - MYSQL_PASSWORD=Zabata8009!
   cypht:
-    image: josh900/cypht-docker2:latest
+    image: sailfrog/cypht-docker:latest
     volumes:
       - ./cypht/users:/var/lib/hm3/users
     ports:
