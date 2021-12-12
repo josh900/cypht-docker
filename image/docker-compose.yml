@@ -10,7 +10,7 @@ services:
       - MYSQL_USER=cypht
       - MYSQL_PASSWORD=Zabata8009!
   cypht:
-    image: josh900/cypht-docker2:latest
+    image: sailfrog/cypht-docker:latest
     volumes:
       - ./cypht/users:/var/lib/hm3/users
     ports:
@@ -71,7 +71,7 @@ services:
       - REDIS_PASSWORD=Zabata8009!
       - REDIS_PORT_NUMBER=6379
     ports:
-      - '8379:6379' 
+      - '8z379:6379' 
 
 
 
