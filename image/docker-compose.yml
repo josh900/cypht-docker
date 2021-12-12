@@ -5,10 +5,24 @@ services:
     volumes:
       - ./db:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=Zabata8009!
+      - MYSQL_ROOT_PASSWORD=root_password
       - MYSQL_DATABASE=cypht
       - MYSQL_USER=cypht
-      - MYSQL_PASSWORD=Zabata8009!
+      - MYSQL_PASSWORD=cypht_password
+  memcached:
+    image: bitnami/memcached:latest
+    environment:
+       - MEMCACHED_CACHE_SIZE=128
+       - MEMCACHED_MAX_CONNECTIONS=2000
+       - MEMCACHED_THREADS=4
+       - MEMCACHED_USERNAME=root
+       - MEMCACHED_PASSWORD=Zabata8009!
+  redis:
+    image: bitnami/redis:latest
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PASSWORD=Zabata8009!
+      - REDIS_PORT_NUMBER=6379
   cypht:
     image: sailfrog/cypht-docker:latest
     volumes:
@@ -17,18 +31,17 @@ services:
       - "8090:80"
     environment:
       - CYPHT_AUTH_USERNAME=admin
-      - CYPHT_AUTH_PASSWORD=Zabata8009!
+      - CYPHT_AUTH_PASSWORD=admin_password
       - CYPHT_DB_CONNECTION_TYPE=host
       - CYPHT_DB_HOST=db
       - CYPHT_DB_NAME=cypht
       - CYPHT_DB_USER=cypht
-      - CYPHT_DB_PASS=Zabata8009!
+      - CYPHT_DB_PASS=cypht_password
       - CYPHT_SESSION_TYPE=DB
-
       - CYPHT_DISABLE_ORIGIN_CHECK=true
       - CYPHT_ENABLE_MEMCACHED=true
-      - CYPHT_MEMCACHED_SERVER=127.0.0.1
-      - CYPHT_MEMCACHED_PORT=31211
+      - CYPHT_MEMCACHED_SERVER=memcached
+      - CYPHT_MEMCACHED_PORT=11211
       - CYPHT_MEMCACHED_AUTH=false
       - CYPHT_MEMCACHED_USER=root
       - CYPHT_MEMCACHED_PASS=Zabata8009!
@@ -51,28 +64,10 @@ services:
       - CYPHT_DEFAULT_SETTING_FEED_SINCE='-5 years'
       - CYPHT_DEFAULT_SETTING_SMTP_COMPOSE_TYPE=0
       - CYPHT_ENABLE_REDIS=true
-      - CYPHT_REDIS_SERVER=127.0.0.1
-      - CYPHT_REDIS_PORT=8379
+      - CYPHT_REDIS_SERVER=redis
+      - CYPHT_REDIS_PORT=6379
       - CYPHT_REDIS_PASS=Zabata8009!
-  memcached:
-    image: bitnami/memcached:latest
-    ports:
-      - '31211:11211'
-    environment:
-       - MEMCACHED_CACHE_SIZE=128
-       - MEMCACHED_MAX_CONNECTIONS=2000
-       - MEMCACHED_THREADS=4
-       - MEMCACHED_USERNAME=root
-       - MEMCACHED_PASSWORD=Zabata8009!
-  redis:
-    image: bitnami/redis:latest
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-      - REDIS_PASSWORD=Zabata8009!
-      - REDIS_PORT_NUMBER=6379
-    ports:
-      - '8379:6379' 
-
+  
 
 
 
