@@ -28,7 +28,7 @@ services:
     volumes:
       - ./cypht/users:/var/lib/hm3/users
     ports:
-      - "8090:80"
+      - "8095:80"
     environment:
       - CYPHT_AUTH_USERNAME=admin
       - CYPHT_AUTH_PASSWORD=admin_password
