@@ -14,7 +14,7 @@ services:
     volumes:
       - ./cypht/users:/var/lib/hm3/users
     ports:
-      - "8089:80"
+      - "8090:80"
     environment:
       - CYPHT_AUTH_USERNAME=admin
       - CYPHT_AUTH_PASSWORD=Zabata8009!
@@ -28,7 +28,7 @@ services:
       - CYPHT_DISABLE_ORIGIN_CHECK=true
       - CYPHT_ENABLE_MEMCACHED=true
       - CYPHT_MEMCACHED_SERVER=127.0.0.1
-      - CYPHT_MEMCACHED_PORT=21211
+      - CYPHT_MEMCACHED_PORT=31211
       - CYPHT_MEMCACHED_AUTH=false
       - CYPHT_MEMCACHED_USER=root
       - CYPHT_MEMCACHED_PASS=Zabata8009!
@@ -52,12 +52,12 @@ services:
       - CYPHT_DEFAULT_SETTING_SMTP_COMPOSE_TYPE=0
       - CYPHT_ENABLE_REDIS=true
       - CYPHT_REDIS_SERVER=127.0.0.1
-      - CYPHT_REDIS_PORT=7379
+      - CYPHT_REDIS_PORT=8379
       - CYPHT_REDIS_PASS=Zabata8009!
   memcached:
     image: bitnami/memcached:latest
     ports:
-      - '21211:11211'
+      - '31211:11211'
     environment:
        - MEMCACHED_CACHE_SIZE=128
        - MEMCACHED_MAX_CONNECTIONS=2000
@@ -71,7 +71,7 @@ services:
       - REDIS_PASSWORD=Zabata8009!
       - REDIS_PORT_NUMBER=6379
     ports:
-      - '7379:6379' 
+      - '8379:6379' 
 
 
 
