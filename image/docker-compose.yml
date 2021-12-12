@@ -5,10 +5,10 @@ services:
     volumes:
       - ./db:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_ROOT_PASSWORD=zabata
       - MYSQL_DATABASE=cypht
       - MYSQL_USER=cypht
-      - MYSQL_PASSWORD=cypht_password
+      - MYSQL_PASSWORD=zabata
   memcached:
     image: bitnami/memcached:latest
     environment:
@@ -16,27 +16,27 @@ services:
        - MEMCACHED_MAX_CONNECTIONS=2000
        - MEMCACHED_THREADS=4
        - MEMCACHED_USERNAME=root
-       - MEMCACHED_PASSWORD=Zabata8009!
+       - MEMCACHED_PASSWORD=zabata
   redis:
     image: bitnami/redis:latest
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
-      - REDIS_PASSWORD=Zabata8009!
+      - REDIS_PASSWORD=zabata
       - REDIS_PORT_NUMBER=6379
   cypht:
     image: sailfrog/cypht-docker:latest
     volumes:
       - ./cypht/users:/var/lib/hm3/users
     ports:
-      - "8095:80"
+      - "8096:80"
     environment:
       - CYPHT_AUTH_USERNAME=admin
-      - CYPHT_AUTH_PASSWORD=admin_password
+      - CYPHT_AUTH_PASSWORD=zabata
       - CYPHT_DB_CONNECTION_TYPE=host
       - CYPHT_DB_HOST=db
       - CYPHT_DB_NAME=cypht
       - CYPHT_DB_USER=cypht
-      - CYPHT_DB_PASS=cypht_password
+      - CYPHT_DB_PASS=zabata
       - CYPHT_SESSION_TYPE=DB
       - CYPHT_DISABLE_ORIGIN_CHECK=true
       - CYPHT_ENABLE_MEMCACHED=true
@@ -44,7 +44,6 @@ services:
       - CYPHT_MEMCACHED_PORT=11211
       - CYPHT_MEMCACHED_AUTH=false
       - CYPHT_MEMCACHED_USER=root
-      - CYPHT_MEMCACHED_PASS=Zabata8009!
       - CYPHT_ALLOW_LONG_SESSION=true
       - CYPHT_LONG_SESSION_LIFETIME=90
       - CYPHT_DISABLE_IP_CHECK=true
@@ -66,9 +65,4 @@ services:
       - CYPHT_ENABLE_REDIS=true
       - CYPHT_REDIS_SERVER=redis
       - CYPHT_REDIS_PORT=6379
-      - CYPHT_REDIS_PASS=Zabata8009!
-  
-
-
-
-
+      - CYPHT_REDIS_PASS=zabata
